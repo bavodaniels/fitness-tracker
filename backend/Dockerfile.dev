@@ -1,0 +1,8 @@
+FROM amazoncorretto:25
+RUN yum install -y tar gzip && yum clean all
+WORKDIR /app
+COPY pom.xml mvnw ./
+COPY .mvn .mvn
+RUN ./mvnw dependency:go-offline -B
+EXPOSE 8080
+CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.fork=false"]

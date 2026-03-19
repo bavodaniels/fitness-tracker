@@ -8,8 +8,48 @@ services:
       POSTGRES_PASSWORD: fitness_pass
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fitness_user -d fitness_tracker"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: fitness-tracker-backend
+    ports:
+      - "8080:8080"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./backend:/app
+      - maven_cache:/root/.m2
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/fitness_tracker
+      SPRING_DATASOURCE_USERNAME: fitness_user
+      SPRING_DATASOURCE_PASSWORD: fitness_pass
+      SPRING_FLYWAY_URL: jdbc:postgresql://postgres:5432/fitness_tracker
+      SPRING_FLYWAY_USER: fitness_user
+      SPRING_FLYWAY_PASSWORD: fitness_pass
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: fitness-tracker-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      VITE_API_BASE_URL: http://localhost:8080/api
+    depends_on:
+      - backend
 
 volumes:
   postgres_data:
+  maven_cache:

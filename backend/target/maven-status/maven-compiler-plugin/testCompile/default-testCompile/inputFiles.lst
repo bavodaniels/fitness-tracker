@@ -1,6 +1,6 @@
-/Users/bavodaniels/Projects/xplore/fitness-tracker/backend/src/test/java/com/xplore/fitness/FitnessTrackerApplicationTests.java
-/Users/bavodaniels/Projects/xplore/fitness-tracker/backend/src/test/java/com/xplore/fitness/controller/AuthControllerTest.java
-/Users/bavodaniels/Projects/xplore/fitness-tracker/backend/src/test/java/com/xplore/fitness/controller/HealthControllerTest.java
-/Users/bavodaniels/Projects/xplore/fitness-tracker/backend/src/test/java/com/xplore/fitness/controller/WorkoutControllerEdgeCaseTest.java
-/Users/bavodaniels/Projects/xplore/fitness-tracker/backend/src/test/java/com/xplore/fitness/controller/WorkoutControllerTest.java
-/Users/bavodaniels/Projects/xplore/fitness-tracker/backend/src/test/java/com/xplore/fitness/repository/UserRepositoryTest.java
+/app/src/test/java/com/xplore/fitness/FitnessTrackerApplicationTests.java
+/app/src/test/java/com/xplore/fitness/controller/AuthControllerTest.java
+/app/src/test/java/com/xplore/fitness/controller/HealthControllerTest.java
+/app/src/test/java/com/xplore/fitness/controller/WorkoutControllerEdgeCaseTest.java
+/app/src/test/java/com/xplore/fitness/controller/WorkoutControllerTest.java
+/app/src/test/java/com/xplore/fitness/repository/UserRepositoryTest.java
